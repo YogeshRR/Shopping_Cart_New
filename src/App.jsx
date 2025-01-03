@@ -67,16 +67,21 @@ function App() {
     });
   }
 
+  const crtContextValue = {
+    items: shoppingCart.items,
+    addItemToCart : handleAddItemToCart,
+    updateCartItem : handleUpdateCartItemQuantity,
+  }
   return (
-    <CartContext.Provider value={{items : []}}>
+    <CartContext.Provider value={crtContextValue}>
       <Header
-        cart={shoppingCart}
-        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
+        // cart={shoppingCart}
+        // onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
       />
       <Shop>
       {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id}>
-            <Product {...product} onAddToCart={handleAddItemToCart} />
+            <Product {...product}  />
           </li>
         ))}
       </Shop>
